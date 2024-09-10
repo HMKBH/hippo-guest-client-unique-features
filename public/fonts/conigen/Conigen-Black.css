@@ -1,0 +1,12 @@
+/* Webfont: Conigen-Black */@font-face {
+    font-family: 'ConigenBlack';
+    src: url('Conigen-Black.eot'); /* IE9 Compat Modes */
+    src: url('Conigen-Black.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Conigen-Black.woff') format('woff'), /* Modern Browsers */
+         url('Conigen-Black.woff2') format('woff2'), /* Modern Browsers */
+         url('Conigen-Black.ttf') format('truetype'); /* Safari, Android, iOS */
+             font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

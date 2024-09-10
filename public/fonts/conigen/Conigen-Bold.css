@@ -1,0 +1,12 @@
+/* Webfont: Conigen-Bold */@font-face {
+    font-family: 'ConigenBold';
+    src: url('Conigen-Bold.eot'); /* IE9 Compat Modes */
+    src: url('Conigen-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Conigen-Bold.woff') format('woff'), /* Modern Browsers */
+         url('Conigen-Bold.woff2') format('woff2'), /* Modern Browsers */
+         url('Conigen-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+             font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+

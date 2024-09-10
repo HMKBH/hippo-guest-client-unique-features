@@ -1,0 +1,12 @@
+/* Webfont: Conigen-ExtraBold */@font-face {
+    font-family: 'ConigenExtBd';
+    src: url('Conigen-ExtraBold.eot'); /* IE9 Compat Modes */
+    src: url('Conigen-ExtraBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Conigen-ExtraBold.woff') format('woff'), /* Modern Browsers */
+         url('Conigen-ExtraBold.woff2') format('woff2'), /* Modern Browsers */
+         url('Conigen-ExtraBold.ttf') format('truetype'); /* Safari, Android, iOS */
+             font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

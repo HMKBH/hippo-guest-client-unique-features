@@ -1,0 +1,363 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Amasis";
+  src: url("/public/fonts/amasis/Amasis-MT-Std-Font.otf") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Conigen-Regular */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-Regular.eot");
+  src: url("/public/fonts/conigen/Conigen-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-Regular.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-Regular.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Conigen-Italic */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-RegularItalic.eot");
+  src: url("/public/fonts/conigen/Conigen-RegularItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-RegularItalic.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-RegularItalic.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-RegularItalic.ttf") format("truetype");
+  font-weight: 400; /* Normal weight */
+  font-style: italic;
+  font-display: swap;
+}
+/* Conigen-Bold */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-Bold.eot");
+  src: url("/public/fonts/conigen/Conigen-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-Bold.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-Bold.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Conigen-BoldItalic */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-BoldItalic.eot");
+  src: url("/public/fonts/conigen/Conigen-BoldItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-BoldItalic.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-BoldItalic.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Conigen-ExtraBold */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-ExtraBold.eot");
+  src: url("/public/fonts/conigen/Conigen-ExtraBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-ExtraBold.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-ExtraBold.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Conigen-ExtraBoldItalic */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-ExtraBoldItalic.eot");
+  src: url("/public/fonts/conigen/Conigen-ExtraBoldItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-ExtraBoldItalic.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-ExtraBoldItalic.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Conigen-Medium */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-Medium.eot");
+  src: url("/public/fonts/conigen/Conigen-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-Medium.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-Medium.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Conigen-MediumItalic */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-MediumItalic.eot");
+  src: url("/public/fonts/conigen/Conigen-MediumItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-MediumItalic.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-MediumItalic.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Conigen-SemiBold */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-SemiBold.eot");
+  src: url("/public/fonts/conigen/Conigen-SemiBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-SemiBold.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-SemiBold.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Conigen-SemiBoldItalic */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-SemiBoldItalic.eot");
+  src: url("/public/fonts/conigen/Conigen-SemiBoldItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-SemiBoldItalic.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-SemiBoldItalic.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Conigen-Black */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-Black.eot");
+  src: url("/public/fonts/conigen/Conigen-Black.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-Black.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-Black.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-Black.ttf") format("truetype");
+  font-weight: 900; /* Black weight */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Conigen-BlackItalic */
+@font-face {
+  font-family: "Conigen";
+  src: url("/public/fonts/conigen/Conigen-BlackItalic.eot");
+  src: url("/public/fonts/conigen/Conigen-BlackItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("/public/fonts/conigen/Conigen-BlackItalic.woff2") format("woff2"),
+    url("/public/fonts/conigen/Conigen-BlackItalic.woff") format("woff"),
+    url("/public/fonts/conigen/Conigen-BlackItalic.ttf") format("truetype");
+  font-weight: 900; /* Black weight */
+  font-style: italic;
+  font-display: swap;
+}
+
+/* dark mode is priotized */
+@layer base {
+  :root {
+    --light-color: 255 11.29% 84.71%;
+    --light-foreground: 0 0% 100%;
+
+    --dark-color: 261.43 28.3% 13.14%;
+    --dark-foreground: 0 0% 100%;
+
+    /* Main background color for the application or website. */
+    --background: 0 0% 100%;
+    /* Main text or icon color to ensure readability against the main background. */
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%; /* Background color for pop-up elements like tooltips, modals, or dropdowns. */
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Brand or theme colors */
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%; /* Subdued color for less prominent elements or secondary text. eg: hover */
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%; /* Color to draw attention to specific elements like notifications or highlights. */
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%; /* Color indicating potentially harmful actions like deleting data. */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    /* Utility colors */
+
+    --border-input: #1c1430;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%; /* Color for focus rings around interactive elements for accessibility. */
+    --icon: var(--dark-color);
+
+    /* other variables related to theme */
+    --bg-gradient-header-start: 0 0% 0% / 0.82;
+    --bg-gradient-header-end: 0 0% 0% / 0.14;
+
+    --logo-title-color: #1c1430;
+    --logo-tagline-color: #443266;
+
+    --header-logo-title-color: #f1f0ff;
+    --header-logo-tagline-color: #c3c3e5;
+
+    /* Miscellaneous */
+    --radius: 0.5rem;
+
+    --header-height: 56px;
+
+    --star-rating: #443266;
+
+    --text-color: #000000;
+
+    --chart-1: 12 76% 61%;
+
+    --chart-2: 173 58% 39%;
+
+    --chart-3: 197 37% 24%;
+
+    --chart-4: 43 74% 66%;
+
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+
+    --border-input: #d9d9d9;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --icon: var(--light-color);
+
+    --bg-gradient-header-start: 0 0% 100% / 0.82;
+    --bg-gradient-header-end: 0 0% 100% / 0.14;
+
+    --logo-title-color: #f1f0ff;
+    --logo-tagline-color: #c3c3e5;
+
+    --header-logo-title-color: #1c1430;
+    --header-logo-tagline-color: #443266;
+    --star-rating: #ffd600;
+    --text-color: #d9d9d9;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+  /* to avoid curved border in ios */
+  input[type="search"] {
+    -webkit-appearance: none;
+  }
+
+  img.skeleton {
+    transition: all 500ms ease-in-out;
+  }
+
+  .skeleton-loading {
+    @apply bg-gray-300  animate-pulse dark:bg-gray-700;
+    filter: blur(3px);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --header-height: 68px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --header-height: 78px;
+    }
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply px-6 md:px-8;
+  }
+
+  .header-item {
+    @apply px-3 py-2  uppercase transition-all bg-transparent rounded-md hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.accommodation-overlay [data-radix-popper-content-wrapper] {
+  bottom: 0;
+  top: unset !important;
+  transform: none !important;
+}

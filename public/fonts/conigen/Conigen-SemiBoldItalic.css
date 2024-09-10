@@ -1,0 +1,12 @@
+/* Webfont: Conigen-SemiBoldItalic */@font-face {
+    font-family: 'ConigenSemBdIta';
+    src: url('Conigen-SemiBoldItalic.eot'); /* IE9 Compat Modes */
+    src: url('Conigen-SemiBoldItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Conigen-SemiBoldItalic.woff') format('woff'), /* Modern Browsers */
+         url('Conigen-SemiBoldItalic.woff2') format('woff2'), /* Modern Browsers */
+         url('Conigen-SemiBoldItalic.ttf') format('truetype'); /* Safari, Android, iOS */
+             font-style: italic;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
