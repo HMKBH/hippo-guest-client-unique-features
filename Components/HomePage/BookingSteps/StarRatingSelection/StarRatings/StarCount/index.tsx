@@ -9,6 +9,12 @@ interface StarCountProps {
     numberOfStar: number;
     numberOfProperties: number;
   };
+  details: {
+    StarRating: StarRatings[];
+  };
+  setDetails: React.Dispatch<
+    React.SetStateAction<{ StarRating: StarRatings[] }>
+  >;
   selectedList: StarRatings[];
   setSelectedList: React.Dispatch<React.SetStateAction<StarRatings[]>>;
 }
@@ -41,7 +47,12 @@ const StarCount = ({ rate, details, setDetails }: StarCountProps) => {
     const starIcons = Array.from({ length: 7 }).map((_, index) => {
       const isFilled = index < rate.numberOfStar;
       const IconComponent = isFilled ? StarIcon : StarOutlineIcon;
-      return <IconComponent className="fill-star-rating" key={index} />;
+      return (
+        <IconComponent
+          className="fill-star-rating !w-[14px] !h-[14px]"
+          key={index}
+        />
+      );
     });
 
     return starIcons;
@@ -51,7 +62,7 @@ const StarCount = ({ rate, details, setDetails }: StarCountProps) => {
   return (
     <div
       onClick={handleSelect}
-      className="flex gap-10 items-center h-[20px] w-[515px] "
+      className="flex items-center h-[20px] 2xl:w-[515px] gap-6"
     >
       <Checkbox
         id={rate.id}
@@ -59,11 +70,11 @@ const StarCount = ({ rate, details, setDetails }: StarCountProps) => {
         disabled={rate.numberOfProperties === 0}
         className="border border-border-input fill-star-rating"
       />
-      <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-30">
+      <label className="text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-30">
         {starIcons}
       </label>
-      <p className=" peer-disabled:cursor-not-allowed peer-disabled:opacity-30 text-text-color">
-        {`${rate.numberOfStar} (Number of properties - ${rate.numberOfProperties})`}
+      <p className=" peer-disabled:cursor-not-allowed peer-disabled:opacity-30 text-text-color text-xs">
+        {`(Number of properties - ${rate.numberOfProperties})`}
       </p>
     </div>
   );

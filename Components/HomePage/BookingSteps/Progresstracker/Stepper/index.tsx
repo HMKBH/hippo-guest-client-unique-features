@@ -1,12 +1,17 @@
 import React from "react";
 
-const Stepper = ({ steps, currentStep }) => {
+interface StepperProps {
+  steps: string[];
+  currentStep: number;
+}
+
+const Stepper: React.FC<StepperProps> = ({ steps, currentStep }) => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between w-[100%]">
       {steps.map((step, i) => (
         <div
           key={i}
-          className={`relative flex flex-col justify-center items-center w-80 ${
+          className={`relative flex flex-col justify-center items-center  w-full ${
             i !== 0
               ? `${
                   i + 1 < currentStep || currentStep === i + 1
@@ -19,7 +24,7 @@ const Stepper = ({ steps, currentStep }) => {
           }`}
         >
           <div
-            className={`w-[50px] h-[50px] flex items-center justify-center z-10 relative rounded-full border-[3px] border-primary font-semibold text-white ${
+            className={`md:w-[50px] md:h-[50px] sm:w-[40px] sm:h-[40px] w-[30px] h-[30px] flex items-center justify-center z-10 relative rounded-full md:border-[3px] md:text-lg border-[2px] border-primary font-semibold text-white text-sm ${
               i + 1 < currentStep
                 ? "bg-[#443266]"
                 : currentStep === i + 1
@@ -29,7 +34,7 @@ const Stepper = ({ steps, currentStep }) => {
           >
             {i + 1}
           </div>
-          <p className="text-[#1F182B]">{step}</p>
+          <p className="text-[#1F182B] text-sm md:text-lg">{step}</p>
         </div>
       ))}
     </div>

@@ -3,12 +3,17 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { Button } from "@/Components/ui/button";
 
-const Buttons = ({ currentStep, steps, setCurrentStep }) => {
+interface ButtonsProps {
+  currentStep: number;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Buttons: React.FC<ButtonsProps> = ({ currentStep, setCurrentStep }) => {
   return (
-    <div className="flex  justify-between">
+    <div className="flex justify-between">
       <Button
         disabled={currentStep < 2}
-        className=" rounded font-semibold text-[#8864CC] disabled:text-slate-600 hover:text-[#443266] bg-transparent hover:bg-transparent"
+        className="rounded font-semibold text-[#8864CC] disabled:text-slate-600 hover:text-[#443266] bg-transparent hover:bg-transparent w-fit p-0 m-0"
         onClick={() => {
           setCurrentStep((prev) => prev - 1);
         }}

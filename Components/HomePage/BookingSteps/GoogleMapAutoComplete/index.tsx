@@ -175,7 +175,7 @@ const PlaceAutocompleteMap: React.FC = () => {
 const AutoComplete: React.FC = () => {
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyDQZX8mnD3cyQyR-Fx3oXRQOje5NCH6fJ0"
+      // googleMapsApiKey="AIzaSyDQZX8mnD3cyQyR-Fx3oXRQOje5NCH6fJ0"
       libraries={["places"]}
     >
       <PlaceAutocompleteMap />

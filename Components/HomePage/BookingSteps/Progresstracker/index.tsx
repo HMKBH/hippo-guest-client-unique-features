@@ -9,51 +9,84 @@ import Buttons from "./Buttons";
 import ReviewsAndNotes from "../ReviewsAndNotes";
 import SummaryOverview from "../SummaryOverview";
 
-const TimeLine = ({ details, setDetails }) => {
+interface StepperContextType {
+  details: {
+    PropertyTypes: string[];
+    BasisTypes: string[];
+    StarRating: string[];
+    BudgetPerNight: {
+      minimum: string;
+      maximum: string;
+    };
+    SpecialNotes: string;
+    location: Record<string, unknown>;
+    BookingDates: Record<string, unknown>;
+  };
+  setDetails: React.Dispatch<
+    React.SetStateAction<{
+      PropertyTypes: string[];
+      BasisTypes: string[];
+      StarRating: string[];
+      BudgetPerNight: {
+        minimum: string;
+        maximum: string;
+      };
+      SpecialNotes: string;
+      location: Record<string, unknown>;
+      BookingDates: Record<string, unknown>;
+    }>
+  >;
+}
+
+export const StepperContext = createContext<StepperContextType | null>(null);
+
+const TimeLine = () => {
+  const [details, setDetails] = useState<StepperContextType["details"]>({
+    PropertyTypes: [],
+    BasisTypes: [],
+    StarRating: [],
+    BudgetPerNight: {
+      minimum: "",
+      maximum: "",
+    },
+    SpecialNotes: "",
+    location: {},
+    BookingDates: {},
+  });
   const steps = ["Step 1", "Step 2", "Step 3", "Step 4"];
   const [currentStep, setCurrentStep] = useState(1);
 
-  const StepperContext = createContext(null);
-
-  const displayStep = (steps) => {
+  const displayStep = (steps: number) => {
     switch (steps) {
       case 1:
         return <LocationAndGuests />;
       case 2:
-        return <PropertyAndBudget details={details} setDetails={setDetails} />;
+        return <PropertyAndBudget />;
       case 3:
-        return (
-          <StarRatingSelection details={details} setDetails={setDetails} />
-        );
-
+        return <StarRatingSelection />;
       case 4:
         return <ReviewsAndNotes />;
       case 5:
-      // return <SummaryOverview />;
+        return <SummaryOverview />;
       default:
         return null;
     }
   };
-
   return (
-    <div className="flex flex-col bg-white justify-between container h-[680px] gap-5 my-10 p-10 shadow-xl">
+    <div className="2xl:container flex flex-col bg-white justify-between h-full 2xl:h-[680px] gap-10 2xl:my-10 m-3 p-2 shadow-xl">
       <div className="flex flex-col items-center gap-5">
         {currentStep !== 5 && (
           <Stepper steps={steps} currentStep={currentStep} />
         )}
 
-        <div className="">
+        <div>
           <StepperContext.Provider value={{ details, setDetails }}>
             {displayStep(currentStep)}
           </StepperContext.Provider>
         </div>
       </div>
 
-      <Buttons
-        currentStep={currentStep}
-        steps={steps}
-        setCurrentStep={setCurrentStep}
-      />
+      <Buttons currentStep={currentStep} setCurrentStep={setCurrentStep} />
     </div>
   );
 };

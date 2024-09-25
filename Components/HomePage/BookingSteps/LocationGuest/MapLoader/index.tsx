@@ -1,12 +1,15 @@
-// Components/HomePage/BookingSteps/MapLoader.tsx
 import React from "react";
-import { useJsApiLoader } from "@react-google-maps/api";
+import { useJsApiLoader, Libraries } from "@react-google-maps/api";
 
-const libraries = ["places"]; // Add other libraries you may need
+const libraries: Libraries = ["places"];
 
-const MapLoader: React.FC = ({ children }) => {
+interface MapLoaderProps {
+  children: React.ReactNode;
+}
+
+const MapLoader: React.FC<MapLoaderProps> = ({ children }) => {
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyDQZX8mnD3cyQyR-Fx3oXRQOje5NCH6fJ0", // Your API key here
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "",
     libraries,
   });
 
@@ -18,7 +21,7 @@ const MapLoader: React.FC = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  return <>{children}</>;
+  return <div>{children}</div>;
 };
 
 export default MapLoader;

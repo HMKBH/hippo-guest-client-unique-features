@@ -7,18 +7,8 @@ export const content = [
   "./src/**/*.{ts,tsx}",
 ];
 export const prefix = "";
+export const mode = "jit";
 export const theme = {
-  fontSize: {
-    xs: "11px",
-    sm: "12px",
-    md: "14px",
-    lg: "16px",
-    xl: "18px",
-    "2xl": "20px",
-    "3xl": "24px",
-    "4xl": "32px",
-  },
-
   container: {
     center: true,
     padding: "2rem",
@@ -27,6 +17,16 @@ export const theme = {
     },
   },
   extend: {
+    fontSize: {
+      xs: "11px",
+      sm: "12px",
+      md: "14px",
+      lg: "16px",
+      xl: "18px",
+      "2xl": "20px",
+      "3xl": "24px",
+      "4xl": "32px",
+    },
     colors: {
       "text-color": "var( --text-color)",
       "star-rating": "var(--star-rating)",

@@ -4,14 +4,14 @@ import { Checkbox } from "@/Components/ui/checkbox";
 import { Button } from "@/Components/ui/button";
 
 const Properties = ({ details, setDetails, property }) => {
-  let isSelected = details?.PropertyTypes.some(
+  let isSelected = details?.PropertyTypes?.some(
     (list) => list.id === property.id
   );
 
   const handleSelect = () => {
     setDetails((prevDetails: { PropertyTypes: any[] }) => {
       const updatedSelectedList = isSelected
-        ? prevDetails.PropertyTypes.filter((item) => item.id !== property.id)
+        ? prevDetails?.PropertyTypes.filter((item) => item.id !== property.id)
         : [...prevDetails.PropertyTypes, { ...property }];
 
       return {

@@ -33,12 +33,12 @@ const StarRatings = ({ details, setDetails }) => {
   };
 
   return (
-    <div className="flex gap-4 w-[800px] justify-between">
-      <label className="text-lg text-text-color font-semibold">
+    <div className="flex flex-col 2xl:flex-row 2xl:gap-4 gap-2 2xl:w-[800px] 2xl:justify-between 2xl:items-center">
+      <label className="2xl:text-lg text-sm text-text-color font-semibold">
         Star rating<span className="text-red-500 font-bold">*</span>
       </label>
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-14 h-[20px] w-[515px] ">
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center 2xl:w-[515px] gap-6">
           <Checkbox
             id="AllProperties"
             onClick={handleSelectAllProperties}
@@ -47,11 +47,11 @@ const StarRatings = ({ details, setDetails }) => {
           />
           <label
             htmlFor="AllProperties"
-            className="text-sm font-medium pr-6 text-text-color leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-30"
+            className="text-[10px] font-medium pr-6 text-text-color leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-30"
           >
             All Rated Properties
           </label>
-          <p className="peer-disabled:cursor-not-allowed peer-disabled:opacity-30 text-text-color">
+          <p className="peer-disabled:cursor-not-allowed peer-disabled:opacity-30 text-text-color text-[10px]">
             (Number of properties - 100)
           </p>
         </div>

@@ -1,36 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
 import home from "../../public/images/home.jpg";
 
 import TimeLine from "./BookingSteps/Progresstracker";
 
 const HomePage = () => {
-  const [details, setDetails] = useState({
-    PropertyTypes: [],
-    BasisTypes: [],
-    StarRating: [],
-    BudgetPerNight: {
-      minimum: "",
-      maximum: "",
-    },
-    SpecialNotes: "",
-  });
-  console.log({ details });
-
   return (
-    <div>
-      {/* <Header/> */}
+    <div className="flex items-center flex-col">
       <div
-        className="bg-cover bg-center h-[400px] flex flex-col justify-center items-center "
-        style={{ backgroundImage: `url(${home.src})` }}
+        className="flex flex-col justify-center items-center text-center h-[150px] "
+        // style={{ backgroundImage: `url(${home.src})` }}
       >
-        <h2 className="text-4xl font-bold text-text-color">Request offers</h2>
-        <p className="text-2xl text-text-color">
+        <h2 className="2xl:text-4xl text-xl font-bold text-text-color">
+          Request offers
+        </h2>
+        <p className="2xl:text-2xl text-sm text-text-color text-center">
           Discover entire homes and private rooms perfect for any trip
         </p>
       </div>
-      <TimeLine details={details} setDetails={setDetails} />
-      {/* <Footer/> */}
+      <TimeLine />
     </div>
   );
 };
