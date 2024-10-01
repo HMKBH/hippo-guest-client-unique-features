@@ -56,11 +56,11 @@ const LocationRadius: React.FC<LocationRadiusProps> = ({
     gestureHandling: "cooperative",
   };
   const marks = [
-    { value: 5000, label: "5k" },
-    { value: 240000, label: "240k" },
+    { value: 5000, label: "5km" },
+    { value: 240000, label: "240km" },
   ];
   function valueLabelFormat(value: number) {
-    return `${value / 1000}k`;
+    return `${value / 1000}km`;
   }
 
   return (
@@ -105,7 +105,7 @@ const LocationRadius: React.FC<LocationRadiusProps> = ({
               </GoogleMap>
             </div>
             <span className="text-center mt-2 text-lg font-semibold">
-              Radius {radius / 1000}k
+              Radius {radius / 1000}km
             </span>
             <div className="flex p-12 mb-2">
               <Slider
@@ -128,7 +128,7 @@ const LocationRadius: React.FC<LocationRadiusProps> = ({
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: "42px",
+                    width: "50px",
                     position: "absolute",
                     borderRadius: "5px",
                     color: "white",

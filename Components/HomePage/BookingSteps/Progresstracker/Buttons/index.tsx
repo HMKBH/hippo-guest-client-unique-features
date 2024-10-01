@@ -48,7 +48,7 @@ const Buttons: React.FC<ButtonsProps> = ({ currentStep, setCurrentStep }) => {
           <Button
             className=" px-4 py-2 font-semibold bg-gradient-to-b from-[#443266] to-[#8864CC] text-white rounded hover:bg-gradient-to-b hover:from-[#8864CC] hover:to-[#443266] shadow-lg"
             onClick={() => {
-              //   setCurrentStep((prev) => prev + 1);
+              console.log("Submit");
             }}
           >
             Submit

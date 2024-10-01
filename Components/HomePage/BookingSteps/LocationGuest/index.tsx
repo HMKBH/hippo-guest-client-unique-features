@@ -142,6 +142,7 @@ const LocationAndGuests: React.FC = () => {
             district,
             province,
             radius: calculatedRadius,
+            label,
           };
 
           setRadius(calculatedRadius);
@@ -158,6 +159,7 @@ const LocationAndGuests: React.FC = () => {
               district,
               province,
               radius: calculatedRadius,
+              label,
             },
           }));
         } else {

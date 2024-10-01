@@ -8,7 +8,12 @@ const SpecialNotes = ({ setDetails, details }) => {
         Special Notes<span className="text-red-500 font-bold">*</span>
       </label>
       <div className="flex flex-col gap-4">
-        <Textarea className="2xl:w-[515px] h-[270px] max-h-[270px] w-[300px] text-md border border-border-input bg-white focus-visible:ring-offset-0 focus-visible:ring-0" />
+        <Textarea
+          onChange={(e) =>
+            setDetails({ ...details, SpecialNotes: e.target.value })
+          }
+          className="2xl:w-[515px] h-[270px] max-h-[270px] w-[300px] text-md border border-border-input bg-white focus-visible:ring-offset-0 focus-visible:ring-0"
+        />
       </div>
     </div>
   );

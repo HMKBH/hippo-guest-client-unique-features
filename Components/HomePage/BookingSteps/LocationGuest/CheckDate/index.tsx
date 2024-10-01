@@ -11,7 +11,8 @@ const CheckDate: React.FC<CheckDateProps> = ({ setDetails }) => {
       ...prevDetails,
       BookingDates: {
         ...prevDetails.BookingDates,
-        ...newBookingDates,
+        from: newBookingDates.from,
+        to: newBookingDates.to,
       },
     }));
   };

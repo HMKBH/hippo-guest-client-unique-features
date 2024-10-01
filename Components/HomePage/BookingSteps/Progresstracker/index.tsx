@@ -33,7 +33,14 @@ interface StepperContextType {
   setDetails: React.Dispatch<
     React.SetStateAction<{
       PropertyTypes: string[];
-      layoutOptions: string[];
+      layoutOptions: {
+        id: number;
+        adultCount: number;
+        roomCount: number;
+        childCount: number;
+        childAges: number[];
+        basis: string;
+      }[];
       StarRating: string[];
       BudgetPerNight: {
         minimum: string;
@@ -42,6 +49,7 @@ interface StepperContextType {
       SpecialNotes: string;
       location: Record<string, unknown>;
       BookingDates: Record<string, unknown>;
+      reviewScore: number[];
     }>
   >;
 }
