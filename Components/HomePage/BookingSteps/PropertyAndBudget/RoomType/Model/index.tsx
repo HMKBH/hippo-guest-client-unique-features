@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Accordion,
@@ -21,12 +21,90 @@ interface Layout {
 interface RoomTypeWithModalProps {
   layouts: Layout[];
   deleteLayout: (id: string) => void;
+  handleChildAgeChange: (age: number) => void;
+  handleCounterChange: (value: number) => void;
+  details: any; // Add this line
 }
+function adjustArray(childrenAges: number[], newCount: number): number[] {
+  const currentCount = childrenAges.length;
 
+  if (newCount > currentCount) {
+    return [...childrenAges, ...Array(newCount - currentCount).fill(null)];
+  } else if (newCount < currentCount) {
+    return childrenAges.slice(0, newCount);
+  }
+
+  return childrenAges;
+}
 const RoomTypeWithModal: React.FC<RoomTypeWithModalProps> = ({
   layouts,
   deleteLayout,
+  details,
+  // handleCounterChange,
+  // handleChildAgeChange,
 }) => {
+  const [occupancyConfig, setOccupancyConfig] = useState<{
+    adults: number;
+    children: number;
+    childrenAges: number[];
+    rooms: number;
+  }>({
+    adults: 1,
+    children: 0,
+    childrenAges: [],
+    rooms: 1,
+  });
+
+  // Handle counter change based on the ID (adults or children)
+  function handleCounterChange(id: string, value: number) {
+    if (!Number.isInteger(value)) {
+      return;
+    }
+
+    if (id === "children") {
+      setOccupancyConfig((prev: any) => {
+        const childrenAges = adjustArray(prev.childrenAges, value);
+
+        return {
+          ...prev,
+          children: value,
+          childrenAges,
+        };
+      });
+
+      return;
+    }
+
+    setOccupancyConfig((prev: any) => {
+      const newConfig = { ...prev, [id]: value };
+
+      const { adults, rooms } = newConfig;
+
+      // if (id === "rooms") {
+      //   if (rooms > adults) {
+      //     newConfig.adults = rooms;
+      //   }
+      // } else if (id === "adults") {
+      //   if (adults < rooms && adults > 0) {
+      //     newConfig.rooms = adults;
+      //   }
+      // }
+
+      return newConfig;
+    });
+  }
+  function handleChildAgeChange(index: number, value: number) {
+    setOccupancyConfig((prev) => {
+      const childrenAgesArr = [...prev.childrenAges];
+      childrenAgesArr[index] = value;
+
+      return {
+        ...prev,
+        childrenAges: childrenAgesArr,
+      };
+    });
+  }
+  console.log({ occupancyConfig });
   return (
     <Accordion type="single" collapsible className="w-full">
       {layouts.map((layout, index) => (
@@ -47,8 +125,10 @@ const RoomTypeWithModal: React.FC<RoomTypeWithModalProps> = ({
                 <div className="flex items-center gap-14 w-[515px]">
                   <Counter
                     id={`room-count-${index}`}
-                    value={1}
-                    hanldeCounterChange={() => {}}
+                    value={occupancyConfig.rooms}
+                    hanldeCounterChange={(id, value) =>
+                      handleCounterChange("rooms", value)
+                    }
                   />
                 </div>
               </div>
@@ -59,7 +139,12 @@ const RoomTypeWithModal: React.FC<RoomTypeWithModalProps> = ({
                 >
                   Guest count<span className="text-red-500 font-bold">*</span>
                 </label>
-                <GuestCounter />
+                <GuestCounter
+                  details={details}
+                  handleCounterChange={handleCounterChange}
+                  handleChildAgeChange={handleChildAgeChange}
+                  occupancyConfig={occupancyConfig}
+                />
               </div>
               <div className="flex gap-4 w-[800px] justify-between items-center">
                 <label

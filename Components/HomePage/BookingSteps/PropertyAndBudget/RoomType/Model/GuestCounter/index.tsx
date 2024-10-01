@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Select, SelectContent, SelectTrigger } from "@/Components/ui/select";
 import { Counter } from "hippo-guest-component-library";
+import ChildrenAges from "./ChildrenAges";
 
-const GuestCounter = () => {
+interface GuestCounterProps {
+  occupancyConfigState: [any, React.Dispatch<React.SetStateAction<any>>];
+}
+
+const GuestCounter: React.FC<GuestCounterProps> = ({
+  handleCounterChange,
+  handleChildAgeChange,
+  occupancyConfig,
+}) => {
   return (
     <div className="flex items-center gap-14 h-[20px] w-[515px]">
       <Select>
@@ -16,23 +25,29 @@ const GuestCounter = () => {
             </label>
             <Counter
               id="adults-counter"
-              value={0}
-              hanldeCounterChange={function (id: string, value: number): void {
-                throw new Error("Function not implemented.");
-              }}
+              value={occupancyConfig.adults}
+              hanldeCounterChange={(id, value) =>
+                handleCounterChange("adults", value)
+              }
             />
           </div>
-          <div className="flex flex-row p-4 justify-between items-center">
+          <div className="flex flex-row p-4 justify-between ">
             <label className="text-lg text-text-color font-semibold">
               Children
             </label>
-            <Counter
-              id="children-counter"
-              value={0}
-              hanldeCounterChange={function (id: string, value: number): void {
-                throw new Error("Function not implemented.");
-              }}
-            />
+            <div className="flex flex-col">
+              <Counter
+                id="children-counter"
+                value={occupancyConfig.children}
+                hanldeCounterChange={(id, value) =>
+                  handleCounterChange("children", value)
+                }
+              />
+              <ChildrenAges
+                childrenAges={occupancyConfig.childrenAges}
+                handleChildAgeChange={handleChildAgeChange}
+              />
+            </div>
           </div>
         </SelectContent>
       </Select>

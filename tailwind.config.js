@@ -6,6 +6,7 @@ export const content = [
   "./app/**/*.{ts,tsx}",
   "./src/**/*.{ts,tsx}",
 ];
+export const important = true;
 export const prefix = "";
 export const mode = "jit";
 export const theme = {

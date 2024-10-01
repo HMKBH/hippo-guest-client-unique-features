@@ -50,7 +50,7 @@ const PropertyType: React.FC<PropertyTypeProps> = ({ details, setDetails }) => {
                 <span className="sr-only">Close</span>
               </DialogClose>
             </DialogHeader>
-            <div className="flex flex-wrap gap-2 p-2">
+            <div className="flex lg:flex-wrap flex-col h-fit gap-2 p-2">
               {propertytypes?.map((property) => (
                 <Properties
                   key={property.id}

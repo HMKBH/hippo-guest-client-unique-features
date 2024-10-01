@@ -38,6 +38,7 @@ export default function Home() {
           throw new Error("Function not implemented.");
         }}
       />
+
       <main>
         <HomePage />
       </main>

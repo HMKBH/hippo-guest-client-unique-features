@@ -1,7 +1,7 @@
 import { Textarea } from "@/Components/ui/textarea";
 import React from "react";
 
-const SpecialNotes = () => {
+const SpecialNotes = ({ setDetails, details }) => {
   return (
     <div className="flex flex-col 2xl:flex-row 2xl:gap-4 gap-2 2xl:w-[800px] 2xl:justify-between 2xl:items-cente">
       <label className="2xl:text-lg text-sm font-semibold">
