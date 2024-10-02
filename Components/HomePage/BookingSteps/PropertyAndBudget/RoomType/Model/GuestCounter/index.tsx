@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Select, SelectContent, SelectTrigger } from "@/Components/ui/select";
 import { Counter } from "hippo-guest-component-library";
 import ChildrenAges from "./ChildrenAges";
+import { Separator } from "@/Components/ui/separator";
 
 interface GuestCounterProps {
   occupancyConfigState: [any, React.Dispatch<React.SetStateAction<any>>];
@@ -10,7 +11,8 @@ interface GuestCounterProps {
 const GuestCounter: React.FC<GuestCounterProps> = ({
   handleCounterChange,
   handleChildAgeChange,
-  occupancyConfig,
+  details,
+  index,
 }) => {
   return (
     <div className="flex items-center gap-14 h-[20px] w-[515px]">
@@ -25,12 +27,18 @@ const GuestCounter: React.FC<GuestCounterProps> = ({
             </label>
             <Counter
               id="adults-counter"
-              value={occupancyConfig.adults}
+              value={details.layoutOptions[index].adultCount}
               hanldeCounterChange={(id, value) =>
-                handleCounterChange("adults", value)
+                handleCounterChange(
+                  details.layoutOptions[index].id,
+                  "adultCount",
+                  value
+                )
               }
             />
           </div>
+          <Separator className="bg-[#999797] h-0.5" />
+
           <div className="flex flex-row p-4 justify-between ">
             <label className="text-lg text-text-color font-semibold">
               Children
@@ -38,14 +46,24 @@ const GuestCounter: React.FC<GuestCounterProps> = ({
             <div className="flex flex-col">
               <Counter
                 id="children-counter"
-                value={occupancyConfig.children}
+                value={details.layoutOptions[index].childCount}
                 hanldeCounterChange={(id, value) =>
-                  handleCounterChange("children", value)
+                  handleCounterChange(
+                    details.layoutOptions[index].id,
+                    "childCount",
+                    value
+                  )
                 }
               />
               <ChildrenAges
-                childrenAges={occupancyConfig.childrenAges}
-                handleChildAgeChange={handleChildAgeChange}
+                childrenAges={details.layoutOptions[index].childAges}
+                handleChildAgeChange={(childIndex, value) =>
+                  handleChildAgeChange(
+                    details.layoutOptions[index].id,
+                    childIndex,
+                    value
+                  )
+                }
               />
             </div>
           </div>

@@ -169,15 +169,15 @@ const LocationAndGuests: React.FC = () => {
     });
   }
   return (
-    <div className="flex flex-col gap-6 items-center w-[100%]">
-      <p className=" text-xs md:text-md text-center !w-[80%]">
+    <div className="flex flex-col gap-6 md:gap-8 items-center w-[100%]">
+      <p className=" text-xs md:text-md lg:text-lg text-center ">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere at
         nesciunt sint quod ipsum, quibusdam fugit veniam nulla, dolorum odit
         consequatur natus ab quis velit consequuntur nostrum? Dolore, magnam
         veniam!
       </p>
-      <Separator className="bg-[#D9D9D9] h-0.5 " />
-      <div className="flex flex-col 2xl:gap-20 gap-5 ">
+      <Separator className="bg-[#D9D9D9] h-0.5" />
+      <div className="flex flex-col md:gap-20 gap-5 ">
         <SearchLocation
           suggestions={suggestions}
           handleQueryChange={handleQueryChange}

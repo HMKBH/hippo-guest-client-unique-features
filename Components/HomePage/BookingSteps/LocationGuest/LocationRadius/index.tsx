@@ -64,21 +64,21 @@ const LocationRadius: React.FC<LocationRadiusProps> = ({
   }
 
   return (
-    <div className="flex flex-col md:flex-row md:gap-4 gap-2 md:w-[600px] 2xl:w-[800px] md:justify-between md:items-center">
+    <div className="flex flex-col md:flex-row md:gap-4 gap-2 md:w-[600px] 2xl:w-[800px] w-full md:justify-between md:items-center">
       <label
         id="locationRadius"
-        className="2xl:text-lg text-sm md:!text-lg font-semibold"
+        className="2xl:text-lg text-sm md:text-lg font-semibold"
       >
-        Location Radius<span className="text-red-500">*</span>
+        Radius<span className="text-red-500">*</span>
       </label>
-      <div className="flex items-center 2xl:gap-14 2xl:w-[515px] md:w-[380px]">
+      <div className="flex items-center w-[100%] 2xl:gap-14 2xl:w-[515px] md:w-[380px]">
         <Dialog>
           <DialogTrigger>
-            <Button className="w-fit !h-[40px] 2xl:!h-[50px] md:!h-[45px] items-center px-4 justify-between rounded-sm bg-gradient-to-r from-[#443266] to-[#8864CC] hover:bg-gradient-to-l hover:from-[#8864CC] hover:to-[#443266]">
+            <Button className="w-[100%] h-[40px] 2xl:h-[50px] md:h-[45px] rounded-sm md:items-center md:justify-between  md:text-md px-12 bg-gradient-to-r from-[#443266] to-[#8864CC] hover:bg-gradient-to-l hover:from-[#8864CC] hover:to-[#443266]">
               Select Your Range
             </Button>
           </DialogTrigger>
-          <DialogContent className="p-0 gap-0 overflow-hidden lg:!w-[800px] lg:h-[750px] max-w-[800px]">
+          <DialogContent className="p-0 gap-0 overflow-hidden lg:w-[800px] lg:h-[750px] max-w-[800px]">
             <DialogHeader className="flex flex-row justify-between items-center p-3">
               <span>Property Location</span>
               <DialogClose className="border border-border-input rounded-full">

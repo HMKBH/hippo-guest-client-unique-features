@@ -4,7 +4,7 @@ import { StepperContext } from "../Progresstracker";
 import RoomTypeLayouts from "./RoomTypeLayouts";
 
 const SummaryOverview = () => {
-  const { setDetails, details } = useContext(StepperContext);
+  const { details } = useContext(StepperContext);
 
   return (
     <div className="flex flex-col gap-3 w-full items-start">

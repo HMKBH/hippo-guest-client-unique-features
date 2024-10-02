@@ -48,6 +48,11 @@ const Reviews: React.FC<ReviewsProps> = ({ setDetails, details }) => {
               color: "white",
               bgcolor: "#443266",
             },
+            "& .MuiSlider-valueLabelLabel": {
+              bgcolor: "#443266",
+              position: "absolute",
+              top: "0",
+            },
             "& .MuiSlider-mark": {
               width: "12px",
               height: "12px",

@@ -34,16 +34,6 @@ const basisTypes = [
   { id: 4, type: "Full Board" },
 ];
 
-function adjustArray(childrenAges: number[], newCount: number): number[] {
-  const currentCount = childrenAges.length;
-  if (newCount > currentCount) {
-    return [...childrenAges, ...Array(newCount - currentCount).fill(null)];
-  } else if (newCount < currentCount) {
-    return childrenAges.slice(0, newCount);
-  }
-  return childrenAges;
-}
-
 const RoomTypes = ({
   details,
   setDetails,
@@ -51,7 +41,7 @@ const RoomTypes = ({
   details: Details;
   setDetails: React.Dispatch<React.SetStateAction<Details>>;
 }) => {
-  const [layouts, setLayouts] = useState([{ id: "1", name: "Room 1" }]);
+  const [layouts, setLayouts] = useState([{ id: "1", name: "Layout 1" }]);
   const selectableRatings = basisTypes.filter((types) => types.type);
   const isAllSelected =
     details?.BasisTypes?.length === selectableRatings.length;
@@ -78,7 +68,7 @@ const RoomTypes = ({
 
     setLayouts((prevLayouts) => [
       ...prevLayouts,
-      { id: newId.toString(), name: `Room ${newId}` },
+      { id: newId.toString(), name: `Layout ${newId}` },
     ]);
 
     setDetails((prevDetails) => ({
@@ -86,73 +76,15 @@ const RoomTypes = ({
       layoutOptions: [...prevDetails.layoutOptions, newLayout],
     }));
   };
-
-  const deleteLayout = (id: number) => {
+  const deleteLayout = (id: number | string) => {
+    setLayouts((prev) => prev.filter((layout) => layout.id !== id.toString())); // Convert to string
     setDetails((prev) => ({
       ...prev,
-      layoutOptions: prev.layoutOptions.filter((layout) => layout.id !== id),
+      layoutOptions: prev.layoutOptions.filter(
+        (layout) => layout.id !== parseInt(id.toString()) // Convert to number for comparison
+      ),
     }));
   };
-
-  function handleCounterChange(
-    layoutId: number,
-    field: "adultCount" | "roomCount" | "childCount",
-    value: number
-  ) {
-    if (!Number.isInteger(value) || value < 0) return;
-
-    setDetails((prev) => ({
-      ...prev,
-      layoutOptions: prev.layoutOptions.map((layout) => {
-        if (layout.id === layoutId) {
-          const updatedLayout = { ...layout, [field]: value };
-
-          if (
-            field === "roomCount" &&
-            updatedLayout.roomCount > updatedLayout.adultCount
-          ) {
-            updatedLayout.adultCount = updatedLayout.roomCount;
-          } else if (
-            field === "adultCount" &&
-            updatedLayout.adultCount < updatedLayout.roomCount
-          ) {
-            updatedLayout.roomCount = updatedLayout.adultCount;
-          }
-
-          if (
-            field === "childCount" &&
-            updatedLayout.childCount < updatedLayout.childAges.length
-          ) {
-            updatedLayout.childAges = updatedLayout.childAges.slice(
-              0,
-              updatedLayout.childCount
-            );
-          }
-
-          return updatedLayout;
-        }
-        return layout;
-      }),
-    }));
-  }
-
-  function handleChildAgeChange(
-    layoutId: number,
-    index: number,
-    value: number
-  ) {
-    setDetails((prev) => ({
-      ...prev,
-      layoutOptions: prev.layoutOptions.map((layout) => {
-        if (layout.id === layoutId) {
-          const updatedChildAges = [...layout.childAges];
-          updatedChildAges[index] = value;
-          return { ...layout, childAges: updatedChildAges };
-        }
-        return layout;
-      }),
-    }));
-  }
 
   return (
     <div className="flex flex-col 2xl:flex-row 2xl:gap-4 gap-2 2xl:w-[800px] 2xl:justify-between 2xl:items-center">
@@ -164,7 +96,7 @@ const RoomTypes = ({
           <DialogTrigger className="flex 2xl:w-[430px] w-[320px] h-[40px] 2xl:h-[50px] border border-border-input items-center px-4 justify-between rounded-sm ">
             <span>--Select--</span> <KeyboardArrowDownIcon />
           </DialogTrigger>
-          <DialogContent className="max-w-[890px] max-h-[680px] min-h-[400px] h-fit flex flex-col p-0 gap-0 overflow-y-scroll overflow-x-hidden">
+          <DialogContent className="max-w-[890px] max-h-[680px] min-h-[400px] h-fit flex flex-col p-0 gap-0 overflow-y-scroll overflow-x-hidden sm:rounded-none">
             <DialogHeader className="flex flex-row justify-end items-center p-2">
               <DialogClose className="border border-border-input rounded-full">
                 <X className="h-5 w-5" />
@@ -177,8 +109,6 @@ const RoomTypes = ({
                 details={details}
                 setDetails={setDetails}
                 deleteLayout={deleteLayout}
-                handleCounterChange={handleCounterChange}
-                handleChildAgeChange={handleChildAgeChange}
               />
             </div>
             <div className="flex justify-between p-3">

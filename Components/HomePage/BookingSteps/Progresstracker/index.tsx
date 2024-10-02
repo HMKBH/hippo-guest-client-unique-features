@@ -102,8 +102,8 @@ const TimeLine = () => {
     }
   };
   return (
-    <div className="2xl:container flex flex-col bg-white justify-between  lg:h-[680px] gap-10 2xl:my-10 m-3 p-2 py-5 shadow-xl">
-      <div className="flex flex-col items-center gap-5">
+    <div className="2xl:container flex flex-col bg-white justify-between lg:h-[680px] gap-10 2xl:my-10 m-5 p-5 shadow-xl">
+      <div className="flex flex-col items-center gap-5 md:gap-10 w-full">
         {currentStep !== 5 && (
           <Stepper steps={steps} currentStep={currentStep} />
         )}

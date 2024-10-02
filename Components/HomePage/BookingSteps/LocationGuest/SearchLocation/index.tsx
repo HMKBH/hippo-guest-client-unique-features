@@ -46,21 +46,23 @@ const SearchLocation: React.FC<SearchLocationProps> = ({
   }, [suggestions]);
 
   return (
-    <div className="flex flex-col md:flex-row md:gap-4 gap-2 md:w-[600px] 2xl:w-[800px] md:justify-between md:items-center">
+    <div className="flex flex-col md:flex-row md:gap-4 gap-2 md:w-[600px] 2xl:w-[800px] w-full md:justify-between md:items-center">
       <label id="searchLocation" className="text-sm md:text-lg font-semibold">
-        Search Location<span className="text-red-500">*</span>
+        Location<span className="text-red-500">*</span>
       </label>
-      <div className="flex items-center md:gap-14 2xl:w-[515px]">
+      <div className="flex items-center md:gap-14 2xl:w-[515px] md:w-[380px]">
         <MainSearch
           handleSelection={handleSelection}
-          className="2xl:w-[430px] h-[40px] 2xl:h-[50px] md:h-[45px] border border-solid border-border-input items-center px-4 justify-between rounded-sm"
+          className="2xl:w-[430px] h-[40px] 2xl:h-[50px] md:h-[45px] border border-solid border-border-input items-center justify-between rounded-sm"
           suggestions={suggestions}
           handleQueryChange={async (value: string) => {
             await handleQueryChange(value);
           }}
           handleModalState={() => {}}
-          rootParentClassname="2xl:w-[430px] w-full  z-50 left-0 lg:left-auto "
-          optionsClassName={suggestions.length !== 0 ? `lg:w-full` : `hidden`}
+          rootParentClassname="2xl:w-[430px]  w-full z-50 left-0 lg:left-auto "
+          optionsClassName={
+            suggestions.length !== 0 ? ` lg:w-[430px] ` : `hidden`
+          }
           onChange={(event) => {
             setQuery(event.target.value);
             handleQueryChange(event.target.value);

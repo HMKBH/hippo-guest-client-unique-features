@@ -10,7 +10,16 @@ import {
 import { X } from "lucide-react";
 import { Separator } from "@radix-ui/react-separator";
 
-const RoomTypeLayouts = ({ layout }) => {
+interface Layout {
+  id: number;
+  roomCount: number;
+  adultCount: number;
+  childCount: number;
+  childAges: number[];
+  basis: string;
+}
+
+const RoomTypeLayouts: React.FC<{ layout: Layout }> = ({ layout }) => {
   return (
     <div>
       <Dialog>
@@ -33,9 +42,13 @@ const RoomTypeLayouts = ({ layout }) => {
             </div>
             <div className="flex gap-4">
               <h3>Guest Count</h3>
+
               <p>
-                {layout.adultCount} Adults and {layout.childCount} Children ()
+                {layout.adultCount} Adults and {layout.childCount} Children
               </p>
+              {layout.childAges.map((age, index) => (
+                <p key={index}>({age})</p>
+              ))}
             </div>
             <div className="flex gap-4">
               <h3>Basis</h3>

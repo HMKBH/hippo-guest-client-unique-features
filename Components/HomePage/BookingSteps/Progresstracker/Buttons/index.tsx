@@ -10,7 +10,7 @@ interface ButtonsProps {
 
 const Buttons: React.FC<ButtonsProps> = ({ currentStep, setCurrentStep }) => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between sm:px-3 md:px-5">
       <Button
         disabled={currentStep < 2}
         className="rounded font-semibold text-[#8864CC] disabled:text-slate-600 hover:text-[#443266] bg-transparent hover:bg-transparent w-fit p-0 m-0"
