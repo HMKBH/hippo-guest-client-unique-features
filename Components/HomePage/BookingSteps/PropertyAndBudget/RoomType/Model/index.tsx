@@ -1,5 +1,12 @@
 import React from "react";
 
+interface RoomOption {
+  id: number;
+  adultCount: number;
+  childCount: number;
+  childAges: number[];
+}
+
 import {
   Accordion,
   AccordionContent,
@@ -12,18 +19,15 @@ import GuestCounter from "./GuestCounter";
 import BasisTypes from "./basisTypes";
 import { Button } from "@/Components/ui/button";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-interface Layout {
-  id: string;
-  name: string;
-}
+import ChildrenAges from "./GuestCounter/ChildrenAges";
 
 interface RoomTypeWithModalProps {
-  layouts: Layout[];
-  deleteLayout: (id: string) => void;
+  rooms: room[];
+  deleteRoom: (id: string) => void;
   handleChildAgeChange: (age: number) => void;
   handleCounterChange: (value: number) => void;
-  details: any; // Add this line
+  details: any;
+  setDetails: React.Dispatch<React.SetStateAction<any>>;
 }
 function adjustArray(childrenAges: number[], newCount: number): number[] {
   const currentCount = childrenAges.length;
@@ -37,129 +41,126 @@ function adjustArray(childrenAges: number[], newCount: number): number[] {
   return childrenAges;
 }
 const RoomTypeWithModal: React.FC<RoomTypeWithModalProps> = ({
-  layouts,
-  deleteLayout,
+  deleteRoom,
   details,
   setDetails,
 }) => {
   // Handle counter change based on the ID (adults or children)
-  function handleCounterChange(layoutId: number, id: string, value: number) {
+  function handleCounterChange(roomId: number, id: string, value: number) {
     if (!Number.isInteger(value)) {
       return;
     }
 
-    setDetails((prev) => ({
+    setDetails((prev: { roomOptions: RoomOption[] }) => ({
       ...prev,
-      layoutOptions: prev.layoutOptions.map((layout) => {
-        if (layout.id === layoutId) {
+      roomOptions: prev.roomOptions.map((room: RoomOption) => {
+        if (room.id === roomId) {
           if (id === "childCount") {
-            const childAges = adjustArray(layout.childAges, value);
+            const childAges = adjustArray(room.childAges, value);
             return {
-              ...layout,
+              ...room,
               childCount: value,
               childAges,
             };
           }
           return {
-            ...layout,
+            ...room,
             [id]: value,
           };
         }
-        return layout;
+        return room;
       }),
     }));
   }
 
-  function handleChildAgeChange(
-    layoutId: number,
-    index: number,
-    value: number
-  ) {
-    setDetails((prev) => ({
+  function handleChildAgeChange(roomId: number, index: number, value: number) {
+    setDetails((prev: { roomOptions: RoomOption[] }) => ({
       ...prev,
-      layoutOptions: prev.layoutOptions.map((layout) => {
-        if (layout.id === layoutId) {
-          const childAgesArr = [...layout.childAges];
+      roomOptions: prev.roomOptions.map((room: RoomOption) => {
+        if (room.id === roomId) {
+          const childAgesArr = [...room.childAges];
           childAgesArr[index] = value;
           return {
-            ...layout,
+            ...room,
             childAges: childAgesArr,
           };
         }
-        return layout;
+        return room;
       }),
     }));
   }
   return (
     <>
-      {layouts.map((layout, index) => (
+      {details.roomOptions.map((room: RoomOption, index: number) => (
         <Accordion
           type="single"
           collapsible
-          defaultValue={layout.id}
+          defaultValue={room.id.toString()}
           className="w-full"
-          key={layout.id}
+          key={room.id}
         >
           <AccordionItem
-            value={layout.id}
+            value={room.id.toString()}
             className="border-b-[2px] border-[#999797] "
           >
             <AccordionTrigger className="hover:no-underline data-[state]:">
-              {layout.name}
+              Room {room.id}
             </AccordionTrigger>
             <Separator className="bg-[#999797] h-0.5" />
             <AccordionContent className=" my-5">
-              <div className="flex flex-col items-center mt-5 gap-20">
-                <div className="flex gap-4 w-[800px] justify-between items-center">
-                  <label
-                    id={`room-count-${index}`}
-                    className="text-lg text-text-color font-semibold"
-                  >
-                    Room count<span className="text-red-500 font-bold">*</span>
-                  </label>
-                  <div className="flex items-center gap-14 w-[515px]">
+              <div className="flex flex-row p-4 justify-between items-center">
+                <label className="text-lg text-text-color font-semibold">
+                  Adults
+                </label>
+                <Counter
+                  min={1}
+                  id="adults-counter"
+                  value={details.roomOptions[index].adultCount}
+                  hanldeCounterChange={(id: string, value: number) =>
+                    handleCounterChange(
+                      details.roomOptions[index].id,
+                      "adultCount",
+                      value
+                    )
+                  }
+                />
+              </div>
+              <div className="flex flex-row p-4 justify-between ">
+                <label className="text-lg text-text-color font-semibold">
+                  Children
+                </label>
+                <div className="flex flex-col ">
+                  <div style={{ marginInlineStart: "auto" }}>
                     <Counter
-                      id={`room-count-${index}`}
-                      value={details.layoutOptions[index].roomCount}
-                      hanldeCounterChange={(id, value) =>
+                      min={0}
+                      id="children-counter"
+                      value={details.roomOptions[index].childCount}
+                      hanldeCounterChange={(id: string, value: number) =>
                         handleCounterChange(
-                          details.layoutOptions[index].id,
-                          "roomCount",
+                          details.roomOptions[index].id,
+                          "childCount",
                           value
                         )
                       }
                     />
                   </div>
-                </div>
-                <div className="flex gap-4 w-[800px] justify-between items-center">
-                  <label
-                    id={`guest-count-${index}`}
-                    className="text-lg text-text-color font-semibold"
-                  >
-                    Guest count<span className="text-red-500 font-bold">*</span>
-                  </label>
-                  <GuestCounter
-                    index={index}
-                    details={details}
-                    handleCounterChange={handleCounterChange}
-                    handleChildAgeChange={handleChildAgeChange}
+                  <ChildrenAges
+                    childrenAges={details.roomOptions[index].childAges}
+                    handleChildAgeChange={(childIndex: number, value: number) =>
+                      handleChildAgeChange(
+                        details.roomOptions[index].id,
+                        childIndex,
+                        value
+                      )
+                    }
                   />
                 </div>
-                <div className="flex gap-4 w-[800px] justify-between items-center">
-                  <label
-                    id="guest-count"
-                    className="text-lg text-text-color font-semibold"
-                  >
-                    Basis<span className="text-red-500 font-bold">*</span>
-                  </label>
-                  <BasisTypes />
-                </div>
               </div>
-              {layout.id > "1" && (
+              {room.id > 1 && (
                 <div className="flex justify-end p-3">
                   <Button
                     className="bg-transparent"
-                    onClick={() => deleteLayout(layout.id)}
+                    onClick={() => deleteRoom(room.id.toString())}
                   >
                     <DeleteIcon className="fill-red-500" />
                   </Button>

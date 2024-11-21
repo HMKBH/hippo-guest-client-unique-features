@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { CheckinCheckoutCalendar } from "hippo-guest-component-library";
 
 interface CheckDateProps {
-  setDetails: React.Dispatch<React.SetStateAction<{ BookingDates: any }>>;
+  setDetails: React.Dispatch<React.SetStateAction<{ bookingDates: any }>>;
 }
 
 const CheckDate: React.FC<CheckDateProps> = ({ setDetails }) => {
-  const handleSelection = (newBookingDates: any) => {
-    setDetails((prevDetails: { BookingDates: any }) => ({
+  const handleSelection = (newbookingDates: any) => {
+    setDetails((prevDetails: { bookingDates: any }) => ({
       ...prevDetails,
-      BookingDates: {
-        ...prevDetails.BookingDates,
-        from: newBookingDates.from,
-        to: newBookingDates.to,
+      bookingDates: {
+        ...prevDetails.bookingDates,
+        from: newbookingDates.from,
+        to: newbookingDates.to,
       },
     }));
   };

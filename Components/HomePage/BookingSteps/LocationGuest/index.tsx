@@ -58,6 +58,11 @@ const LocationAndGuests: React.FC = () => {
           const places = predictions.map((prediction) => ({
             _id: prediction.place_id,
             label: prediction.description,
+            city: "",
+            district: "",
+            country: "",
+            latitude: 0,
+            longitude: 0,
           }));
           setSuggestions(places);
         } else {
@@ -106,16 +111,16 @@ const LocationAndGuests: React.FC = () => {
 
           if (placeType === "country") {
             calculatedRadius = 240000;
-            newZoom = 7;
+            newZoom = 7.093109404391481;
           } else if (placeType === "administrative_area_level_1") {
             calculatedRadius = 30000;
-            newZoom = 9.8;
+            newZoom = 10.09310940439148;
           } else if (placeType === "administrative_area_level_2") {
             calculatedRadius = 20000;
-            newZoom = 10.5;
+            newZoom = 10.678071905112638;
           } else if (isCityType(placeType)) {
             calculatedRadius = 5000;
-            newZoom = 12;
+            newZoom = 12.678071905112638;
           }
 
           addressComponents.forEach((component) => {
@@ -151,16 +156,7 @@ const LocationAndGuests: React.FC = () => {
 
           setDetails((prevDetails) => ({
             ...prevDetails,
-            location: {
-              latitude: geometry.location.lat(),
-              longitude: geometry.location.lng(),
-              country,
-              city,
-              district,
-              province,
-              radius: calculatedRadius,
-              label,
-            },
+            location,
           }));
         } else {
           reject(new Error("Geocode was not successful"));
@@ -197,6 +193,7 @@ const LocationAndGuests: React.FC = () => {
             selectLocation={selectLocation}
             setRadius={setRadius}
             setDetails={setDetails}
+            setZoom={setZoom}
           />
         </MapLoader>
 

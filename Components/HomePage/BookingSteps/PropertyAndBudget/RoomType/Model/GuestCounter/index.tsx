@@ -27,10 +27,10 @@ const GuestCounter: React.FC<GuestCounterProps> = ({
             </label>
             <Counter
               id="adults-counter"
-              value={details.layoutOptions[index].adultCount}
+              value={details.roomOptions[index].adultCount}
               hanldeCounterChange={(id, value) =>
                 handleCounterChange(
-                  details.layoutOptions[index].id,
+                  details.roomOptions[index].id,
                   "adultCount",
                   value
                 )
@@ -46,20 +46,20 @@ const GuestCounter: React.FC<GuestCounterProps> = ({
             <div className="flex flex-col">
               <Counter
                 id="children-counter"
-                value={details.layoutOptions[index].childCount}
+                value={details.roomOptions[index].childCount}
                 hanldeCounterChange={(id, value) =>
                   handleCounterChange(
-                    details.layoutOptions[index].id,
+                    details.roomOptions[index].id,
                     "childCount",
                     value
                   )
                 }
               />
               <ChildrenAges
-                childrenAges={details.layoutOptions[index].childAges}
+                childrenAges={details.roomOptions[index].childAges}
                 handleChildAgeChange={(childIndex, value) =>
                   handleChildAgeChange(
-                    details.layoutOptions[index].id,
+                    details.roomOptions[index].id,
                     childIndex,
                     value
                   )

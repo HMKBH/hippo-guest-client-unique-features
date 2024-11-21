@@ -1,6 +1,6 @@
 // import type { DateRange } from "react-day-picker";
 
-// type BookingDates = DateRange | undefined;
+// type bookingDates = DateRange | undefined;
 
 type OccupancyConfigs = {
   adults: number;
@@ -29,7 +29,7 @@ type AccommodationErrors = {
 };
 
 export type {
-  //   BookingDates,
+  //   bookingDates,
   OccupancyConfigs,
   SearchSuggestion,
   AccommodationErrors,

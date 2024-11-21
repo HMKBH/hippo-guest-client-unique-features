@@ -30,7 +30,7 @@ const SummaryOverview = () => {
             Check in
           </h3>
           <p className="text-text-color w-[900px]">
-            {new Date(details.BookingDates.from).toLocaleDateString("en-US", {
+            {new Date(details.bookingDates.from).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",
@@ -42,8 +42,8 @@ const SummaryOverview = () => {
             Check out
           </h3>
           <p className="text-text-color w-[900px]">
-            {details.BookingDates.to
-              ? new Date(details.BookingDates.to).toLocaleDateString("en-US", {
+            {details.bookingDates.to
+              ? new Date(details.bookingDates.to).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -68,7 +68,7 @@ const SummaryOverview = () => {
             Room Type
           </h3>
           <span className="flex flex-col gap-1">
-            {details.layoutOptions.map((layout) => (
+            {details.roomOptions.map((layout) => (
               <span
                 key={layout.id}
                 className="text-text-color w-[900px] flex gap-2  items-baseline"

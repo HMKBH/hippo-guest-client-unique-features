@@ -11,45 +11,29 @@ import SummaryOverview from "../SummaryOverview";
 
 interface StepperContextType {
   details: {
-    PropertyTypes: string[];
-    layoutOptions: {
+    roomOptions: {
       id: number;
       adultCount: number;
-      roomCount: number;
       childCount: number;
       childAges: number[];
-      basis: string;
     }[];
-    StarRating: string[];
-    BudgetPerNight: {
-      minimum: string;
-      maximum: string;
-    };
-    SpecialNotes: string;
+
     location: Record<string, unknown>;
-    BookingDates: Record<string, unknown>;
-    reviewScore: number[];
+    bookingDates: Record<string, unknown>;
+    showSuggestions: boolean;
   };
   setDetails: React.Dispatch<
     React.SetStateAction<{
-      PropertyTypes: string[];
-      layoutOptions: {
+      roomOptions: {
         id: number;
         adultCount: number;
-        roomCount: number;
         childCount: number;
         childAges: number[];
-        basis: string;
       }[];
-      StarRating: string[];
-      BudgetPerNight: {
-        minimum: string;
-        maximum: string;
-      };
-      SpecialNotes: string;
+
       location: Record<string, unknown>;
-      BookingDates: Record<string, unknown>;
-      reviewScore: number[];
+      bookingDates: Record<string, unknown>;
+      showSuggestions: boolean;
     }>
   >;
 }
@@ -58,31 +42,23 @@ export const StepperContext = createContext<StepperContextType | null>(null);
 
 const TimeLine = () => {
   const [details, setDetails] = useState<StepperContextType["details"]>({
-    PropertyTypes: [],
-    layoutOptions: [
+    roomOptions: [
       {
         id: 1,
         adultCount: 1,
-        roomCount: 1,
         childCount: 0,
         childAges: [],
-        basis: "Bed and Breakfast",
       },
     ],
-    StarRating: [],
-    BudgetPerNight: {
-      minimum: "",
-      maximum: "",
-    },
-    SpecialNotes: "",
+
     location: {},
-    BookingDates: {},
-    reviewScore: [5, 7],
+    bookingDates: {},
+    showSuggestions: false,
   });
 
   console.log({ details });
 
-  const steps = ["Step 1", "Step 2", "Step 3", "Step 4"];
+  const steps = ["Step 1", "Step 2"];
   const [currentStep, setCurrentStep] = useState(1);
 
   const displayStep = (steps: number) => {
@@ -91,12 +67,6 @@ const TimeLine = () => {
         return <LocationAndGuests />;
       case 2:
         return <PropertyAndBudget />;
-      case 3:
-        return <StarRatingSelection />;
-      case 4:
-        return <ReviewsAndNotes />;
-      case 5:
-        return <SummaryOverview />;
       default:
         return null;
     }

@@ -7,7 +7,7 @@ interface StepperProps {
 
 const Stepper: React.FC<StepperProps> = ({ steps, currentStep }) => {
   return (
-    <div className="flex justify-between w-[100%]">
+    <div className="flex justify-between w-[50%]">
       {steps.map((step, i) => (
         <div
           key={i}
