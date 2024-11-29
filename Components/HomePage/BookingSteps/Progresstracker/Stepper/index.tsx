@@ -24,7 +24,7 @@ const Stepper: React.FC<StepperProps> = ({ steps, currentStep }) => {
           }`}
         >
           <div
-            className={`md:w-[50px] md:h-[50px] sm:w-[40px] sm:h-[40px] w-[30px] h-[30px] flex items-center justify-center z-10 relative rounded-full md:border-[3px] md:text-lg border-[2px] border-primary font-semibold text-white text-sm ${
+            className={`md:w-[45px] md:h-[45px] w-[40px] h-[40px] flex items-center justify-center z-10 relative rounded-full md:border-[3px] md:text-lg border-[2px] border-primary font-semibold text-white text-sm ${
               i + 1 < currentStep
                 ? "bg-[#443266]"
                 : currentStep === i + 1

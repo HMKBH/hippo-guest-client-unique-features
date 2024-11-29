@@ -6,11 +6,18 @@ import { Button } from "@/Components/ui/button";
 interface ButtonsProps {
   currentStep: number;
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
+  handleSearchSubmit: () => void;
+  handleSearch: () => void;
 }
 
-const Buttons: React.FC<ButtonsProps> = ({ currentStep, setCurrentStep }) => {
+const Buttons: React.FC<ButtonsProps> = ({
+  currentStep,
+  setCurrentStep,
+  handleSearchSubmit,
+  handleSearch,
+}) => {
   return (
-    <div className="flex justify-between sm:px-3 md:px-5">
+    <div className="flex justify-between md:p-5">
       <Button
         disabled={currentStep < 2}
         className="rounded font-semibold text-[#8864CC] disabled:text-slate-600 hover:text-[#443266] bg-transparent hover:bg-transparent w-fit p-0 m-0"
@@ -26,9 +33,7 @@ const Buttons: React.FC<ButtonsProps> = ({ currentStep, setCurrentStep }) => {
         {currentStep < 2 ? (
           <Button
             className=" px-4 py-2 font-semibold bg-gradient-to-b from-[#443266] to-[#8864CC] text-white rounded hover:bg-gradient-to-b hover:from-[#8864CC] hover:to-[#443266] shadow-lg"
-            onClick={() => {
-              setCurrentStep((prev) => prev + 1);
-            }}
+            onClick={handleSearchSubmit}
           >
             <span className="flex gap-3 items-center">
               Next <KeyboardArrowRightIcon />
@@ -37,9 +42,7 @@ const Buttons: React.FC<ButtonsProps> = ({ currentStep, setCurrentStep }) => {
         ) : (
           <Button
             className=" px-4 py-2 font-semibold bg-gradient-to-b from-[#443266] to-[#8864CC] text-white rounded hover:bg-gradient-to-b hover:from-[#8864CC] hover:to-[#443266] shadow-lg"
-            onClick={() => {
-              console.log("Search");
-            }}
+            onClick={handleSearch}
           >
             Search
           </Button>

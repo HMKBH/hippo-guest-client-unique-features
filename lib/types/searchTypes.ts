@@ -19,6 +19,7 @@ type SearchSuggestion = {
   country: string;
   latitude: number;
   longitude: number;
+  radius: number;
 };
 
 type AccommodationErrors = {

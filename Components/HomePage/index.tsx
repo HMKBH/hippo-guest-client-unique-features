@@ -6,9 +6,9 @@ import TimeLine from "./BookingSteps/Progresstracker";
 
 const HomePage = () => {
   return (
-    <div className="flex items-center flex-col">
+    <div className="flex items-center flex-col container">
       <div
-        className="flex flex-col justify-center items-center text-center h-[150px] "
+        className="flex flex-col justify-center items-center text-center h-[250px] "
         // style={{ backgroundImage: `url(${home.src})` }}
       >
         <h2 className="2xl:text-4xl text-xl font-bold text-text-color">

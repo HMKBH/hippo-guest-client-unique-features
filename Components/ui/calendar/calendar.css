@@ -1,0 +1,33 @@
+.calendar-head-cell {
+  @apply text-muted-foreground rounded-md  w-full lg:w-9 font-normal text-[0.8rem];
+}
+
+.calendar-cell {
+  @apply relative flex-1 p-0 text-sm text-center focus-within:relative focus-within:z-20;
+}
+
+.calendar-day {
+  @apply w-full p-0 font-normal rounded-md hover:bg-accent hover:text-accent-foreground h-9 lg:w-9 aria-selected:opacity-100;
+}
+
+.calendar-day-selected {
+  @apply rounded-none bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground;
+}
+
+.calendar-day-range-start {
+  @apply rounded-r-none rounded-l-md;
+}
+
+.calendar-day-range-end {
+  @apply rounded-l-none rounded-r-md;
+}
+
+.calendar-day-range-start.calendar-day-range-end {
+  @apply rounded-md;
+}
+
+@media screen and (max-width: 1024px) {
+  .calender-month:last-child {
+    @apply pb-2;
+  }
+}

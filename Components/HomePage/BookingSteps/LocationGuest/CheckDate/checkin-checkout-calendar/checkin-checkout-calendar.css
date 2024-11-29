@@ -1,0 +1,12 @@
+/* no-prefix */
+.hui-custom-accommodation-overlay .rdp-multiple_months {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* no-prefix */
+.hui-custom-accommodation-overlay [data-radix-popper-content-wrapper] {
+  bottom: 0;
+  top: unset !important;
+  transform: none !important;
+}

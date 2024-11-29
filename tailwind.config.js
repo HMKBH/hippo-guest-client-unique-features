@@ -6,7 +6,6 @@ export const content = [
   "./app/**/*.{ts,tsx}",
   "./src/**/*.{ts,tsx}",
 ];
-export const important = true;
 export const prefix = "";
 export const mode = "jit";
 export const theme = {
@@ -27,6 +26,9 @@ export const theme = {
       "2xl": "20px",
       "3xl": "24px",
       "4xl": "32px",
+    },
+    width: {
+      "fill-available": "-webkit-fill-available",
     },
     colors: {
       "text-color": "var( --text-color)",
@@ -74,17 +76,29 @@ export const theme = {
     },
     keyframes: {
       "accordion-down": {
-        from: { height: "0" },
+        from: { height: 0 },
         to: { height: "var(--radix-accordion-content-height)" },
       },
       "accordion-up": {
         from: { height: "var(--radix-accordion-content-height)" },
-        to: { height: "0" },
+        to: { height: 0 },
+      },
+
+      "hide-content": {
+        from: { opacity: 0 },
+        to: { opacity: 0 },
       },
     },
+
     animation: {
       "accordion-down": "accordion-down 0.2s ease-out",
       "accordion-up": "accordion-up 0.2s ease-out",
+      "hide-content": "hide-content 1s ease-out",
+    },
+
+    boxShadow: {
+      "inner-custom-30": "inset 0 -30px 5px #000000",
+      "inner-custom-40": "inset 0 -40px 6px #000000",
     },
   },
 };

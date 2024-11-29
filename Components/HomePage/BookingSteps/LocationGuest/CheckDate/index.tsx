@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { CheckinCheckoutCalendar } from "hippo-guest-component-library";
+import React, { useContext, useState } from "react";
+import CheckinCheckoutCalendar from "./checkin-checkout-calendar";
+import { StepperContext } from "../../Progresstracker";
 
-interface CheckDateProps {
-  setDetails: React.Dispatch<React.SetStateAction<{ bookingDates: any }>>;
-}
+const CheckDate = () => {
+  const { setDetails } = useContext(StepperContext) ?? {};
 
-const CheckDate: React.FC<CheckDateProps> = ({ setDetails }) => {
   const handleSelection = (newbookingDates: any) => {
-    setDetails((prevDetails: { bookingDates: any }) => ({
+    setDetails?.((prevDetails) => ({
       ...prevDetails,
       bookingDates: {
         ...prevDetails.bookingDates,
@@ -18,17 +17,11 @@ const CheckDate: React.FC<CheckDateProps> = ({ setDetails }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row md:gap-4 gap-2 md:w-[600px] 2xl:w-[800px] md:justify-between md:items-center ">
-      <label className="text-sm md:!text-lg font-semibold">
-        Check In - Check Out<span className="text-red-500 font-bold">*</span>
+    <div className="flex flex-col gap-3 w-auto h-auto sm:flex-row sm:w-[550px] md:w-[650px] sm:items-center sm:justify-between">
+      <label className="text-md md:text-lg font-semibold whitespace-nowrap">
+        Check In - Out<span className="text-red-500 font-bold">*</span>
       </label>
-      <div className="flex items-center md:gap-14 2xl:w-[515px] ">
-        <CheckinCheckoutCalendar
-          className="2xl:w-[430px] md:w-[380px] w-[320px] !h-[40px] 2xl:!h-[50px] md:!h-[45px] !border border-solid border-border-input items-center px-4 justify-between rounded-sm "
-          errorMessage={""}
-          handleSelection={handleSelection}
-        />
-      </div>
+      <CheckinCheckoutCalendar handleSelection={handleSelection} />
     </div>
   );
 };
