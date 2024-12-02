@@ -1,4 +1,5 @@
 import React from "react";
+
 import MainSearch from "./MainSearch";
 
 interface SearchLocationProps {

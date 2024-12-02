@@ -16,9 +16,9 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-import RoomTypeWithModal from "./Model";
-import FormErrorMsg from "@/components/ui/form-error-message";
-import { StepperContext } from "../..";
+import RoomGuestCount from "./Model";
+import { RequestOffer } from "../..";
+import FormErrorMsg from "@/components/ui/formErrorMessage";
 
 interface roomOption {
   adultCount: number;
@@ -26,9 +26,9 @@ interface roomOption {
   childAges: number[];
 }
 
-const RoomTypes = () => {
+const Travellers = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const stepperContext = useContext(StepperContext);
+  const stepperContext = useContext(RequestOffer);
 
   if (!stepperContext) {
     return null;
@@ -69,7 +69,7 @@ const RoomTypes = () => {
             </PopoverTrigger>
             <PopoverContent className="max-h-[430px] w-[256px] md:w-[430px] sm:w-[400px] overflow-hidden overflow-y-auto flex flex-col p-0 gap-0">
               <div className="flex flex-col p-2 w-full ">
-                <RoomTypeWithModal deleteRoom={deleteRoom} />
+                <RoomGuestCount deleteRoom={deleteRoom} />
               </div>
               <div className="flex justify-between p-2">
                 <Button
@@ -100,7 +100,7 @@ const RoomTypes = () => {
                 </DialogClose>
               </DialogHeader>
               <div className="flex flex-col p-4 w-full ">
-                <RoomTypeWithModal deleteRoom={deleteRoom} />
+                <RoomGuestCount deleteRoom={deleteRoom} />
               </div>
               <div className="flex justify-between p-2">
                 <Button
@@ -122,4 +122,4 @@ const RoomTypes = () => {
   );
 };
 
-export default RoomTypes;
+export default Travellers;

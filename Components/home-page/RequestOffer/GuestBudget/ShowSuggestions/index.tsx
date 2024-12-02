@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
+
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { StepperContext } from "../..";
+
+import { RequestOffer } from "../..";
 
 const ShowSuggestions = () => {
-  const { setDetails, details } = useContext(StepperContext) ?? {};
+  const { setDetails, details } = useContext(RequestOffer) ?? {};
 
   const handleCheckboxChange = (checked: boolean) => {
     setDetails?.((prev) => ({ ...prev, showSuggestions: checked }));

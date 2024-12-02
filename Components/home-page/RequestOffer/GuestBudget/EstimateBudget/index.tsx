@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
+
 import { Input } from "@/components/ui/input";
-import FormErrorMsg from "@/components/ui/form-error-message";
-import { StepperContext } from "../..";
+
+import { RequestOffer } from "../..";
+import FormErrorMsg from "@/components/ui/formErrorMessage";
 
 const EstimateBudget = () => {
   const { setDetails, details, errorMessage, setErrorMessage, isSubmitted } =
-    useContext(StepperContext) ?? {};
+    useContext(RequestOffer) ?? {};
 
   const handleMinChange = (e: { target: { value: any } }) => {
     const value = e.target.value;

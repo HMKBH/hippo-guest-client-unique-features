@@ -1,17 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+
 import Slider from "@mui/material/Slider";
-import { Button } from "@/components/ui/button";
-import { Circle, GoogleMap, Marker } from "@react-google-maps/api";
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { X } from "lucide-react";
-import { StepperContext } from "../..";
+import { Button } from "@/components/ui/button";
+import { Circle, GoogleMap, Marker } from "@react-google-maps/api";
+
+import { RequestOffer } from "../..";
 
 interface LocationRadiusProps {
   mapRef: React.MutableRefObject<google.maps.Map | null>;
@@ -25,7 +26,7 @@ const LocationRadius: React.FC<LocationRadiusProps> = ({
   setZoom,
 }) => {
   const { setDetails, details, errorMessage, setErrorMessage, setIsSubmitted } =
-    useContext(StepperContext) ?? {};
+    useContext(RequestOffer) ?? {};
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const validateCondition = () => {

@@ -1,4 +1,5 @@
 import React from "react";
+
 import CheckinCheckoutCalendar from "./checkin-checkout-calendar";
 
 const CheckDate = () => {

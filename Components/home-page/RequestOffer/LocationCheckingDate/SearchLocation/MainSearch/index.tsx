@@ -8,13 +8,14 @@ import React, {
 
 import { Separator } from "@/components/ui/separator";
 import { Combobox, Transition } from "@headlessui/react";
-import FormErrorMsg from "@/components/ui/form-error-message";
+import FormErrorMsg from "@/components/ui/formErrorMessage";
 import { getSearchSuggestionsApi } from "@/lib/api/searchApi";
 import type { SearchSuggestion } from "@/lib/types/searchTypes";
 import { MapPinIcon, BedDoubleIcon, ArrowLeftCircleIcon } from "lucide-react";
 
 import "./main-search-input.css";
-import { StepperContext } from "../../..";
+
+import { RequestOffer } from "../../..";
 
 type PageProps = {
   setZoom: (zoom: number) => void;
@@ -40,7 +41,7 @@ function isCityType(type: string | undefined): boolean {
 
 function MainSearch({ setZoom }: PageProps) {
   const { setDetails, details, errorMessage, setErrorMessage, isSubmitted } =
-    useContext(StepperContext) ?? {};
+    useContext(RequestOffer) ?? {};
 
   const selected = details?.location;
 

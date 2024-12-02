@@ -1,28 +1,22 @@
-// React Imports
 import { useContext, useEffect, useRef, useState } from "react";
 
-// Third-party Libraries
-import { X } from "lucide-react";
-import { Close } from "@radix-ui/react-popover";
-import { addDays, format } from "date-fns";
-
-// Assets
-import "./checkin-checkout-calendar.css";
-
-// components
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
+import { X } from "lucide-react";
+import { cn } from "@/lib/utils/cn";
+import { addDays, format } from "date-fns";
+import { Close } from "@radix-ui/react-popover";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/Calendar";
 import { Separator } from "@/components/ui/separator";
 
-// Utilities and Types
-import { cn } from "@/lib/utils/cn";
-import FormErrorMsg from "@/components/ui/form-error-message";
-import { StepperContext } from "../../..";
+import "./checkin-checkout-calendar.css";
+
+import FormErrorMsg from "@/components/ui/formErrorMessage";
+import { RequestOffer } from "../../..";
 
 interface BookingDates {
   from?: Date;
@@ -49,7 +43,7 @@ function CheckinCheckoutCalendar(props: CheckinCheckoutCalendarProps) {
   const { ...rest } = props;
 
   const { setDetails, details, errorMessage, setErrorMessage, isSubmitted } =
-    useContext(StepperContext) ?? {};
+    useContext(RequestOffer) ?? {};
 
   const [bookingDates, setBookingDates] = useState<BookingDates>({
     from:

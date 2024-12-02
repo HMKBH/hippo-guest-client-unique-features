@@ -7,7 +7,7 @@ import TimeLine from "./TimeLine";
 import PropertyAndBudget from "./GuestBudget";
 import LocationCheckingDate from "./LocationCheckingDate";
 
-interface StepperContextType {
+interface RequestOffersType {
   details: {
     roomOptions: {
       adultCount: number;
@@ -68,10 +68,10 @@ interface StepperContextType {
   >;
 }
 
-export const StepperContext = createContext<StepperContextType | null>(null);
+export const RequestOffer = createContext<RequestOffersType | null>(null);
 
 const RequestOffers = () => {
-  const [details, setDetails] = useState<StepperContextType["details"]>({
+  const [details, setDetails] = useState<RequestOffersType["details"]>({
     roomOptions: [
       {
         adultCount: 1,
@@ -102,8 +102,6 @@ const RequestOffers = () => {
     },
     showSuggestions: false,
   });
-
-  console.log({ details });
 
   const steps = ["Step 1", "Step 2"];
   const [currentStep, setCurrentStep] = useState(1);
@@ -234,11 +232,10 @@ const RequestOffers = () => {
   };
 
   return (
-    <div className="flex flex-col bg-white justify-between w-full lg:h-[600px] m-5 p-5 gap-10 md:gap-0 shadow-xl">
+    <div className="flex flex-col bg-white justify-between w-full lg:h-[600px] my-20 p-5 gap-10 md:gap-0 shadow-xl container">
       <div className="flex flex-col items-center gap-5 w-full">
         <TimeLine steps={steps} currentStep={currentStep} />
-
-        <StepperContext.Provider
+        <RequestOffer.Provider
           value={{
             details,
             setDetails,
@@ -249,14 +246,13 @@ const RequestOffers = () => {
           }}
         >
           {displayStep(currentStep)}
-        </StepperContext.Provider>
+        </RequestOffer.Provider>
       </div>
-
       <Buttons
         currentStep={currentStep}
+        handleSearch={handleSearch}
         setCurrentStep={setCurrentStep}
         handleSearchSubmit={handleSearchSubmit}
-        handleSearch={handleSearch}
       />
     </div>
   );

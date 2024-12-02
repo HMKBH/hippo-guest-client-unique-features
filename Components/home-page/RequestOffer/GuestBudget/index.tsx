@@ -1,9 +1,10 @@
 import React from "react";
+
 import { Separator } from "@/components/ui/separator";
 
-import RoomTypes from "./RoomType";
-import ShowSuggestions from "./ShowSuggestions";
+import Travellers from "./Traveller";
 import EstimateBudget from "./EstimateBudget";
+import ShowSuggestions from "./ShowSuggestions";
 
 const PropertyAndBudget = () => {
   return (
@@ -17,7 +18,7 @@ const PropertyAndBudget = () => {
       <Separator className="bg-[#D9D9D9] h-0.5" />
       <div className="flex flex-col gap-10 justify-center sm:items-center w-full">
         <EstimateBudget />
-        <RoomTypes />
+        <Travellers />
         <ShowSuggestions />
       </div>
     </div>

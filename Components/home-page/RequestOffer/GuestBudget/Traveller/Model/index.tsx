@@ -5,15 +5,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Separator } from "@/components/ui/separator";
 import { Counter } from "hippo-guest-component-library";
 
-import ChildrenAges from "./GuestCounter/ChildrenAges";
-import { StepperContext } from "../../..";
+import { RequestOffer } from "../../..";
+import ChildrenAges from "../RoomGuestCount/GuestCounter/ChildrenAges";
 
-interface RoomTypeWithModalProps {
+interface RoomGuestCountProps {
   deleteRoom: (index: number) => void;
 }
 
@@ -28,11 +28,9 @@ function adjustArray(childrenAges: number[], newCount: number): number[] {
 
   return childrenAges;
 }
-const RoomTypeWithModal: React.FC<RoomTypeWithModalProps> = ({
-  deleteRoom,
-}) => {
+const RoomGuestCount: React.FC<RoomGuestCountProps> = ({ deleteRoom }) => {
   const { setDetails, details, isSubmitted, setErrorMessage, setIsSubmitted } =
-    useContext(StepperContext) ?? {};
+    useContext(RequestOffer) ?? {};
 
   function handleCounterChange(index: number, key: string, value: number) {
     if (!Number.isInteger(value)) {
@@ -185,4 +183,4 @@ const RoomTypeWithModal: React.FC<RoomTypeWithModalProps> = ({
   );
 };
 
-export default RoomTypeWithModal;
+export default RoomGuestCount;
