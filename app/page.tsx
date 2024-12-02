@@ -1,6 +1,6 @@
 "use client";
 
-import HomePage from "@/Components/HomePage";
+import HomePage from "@/components/home-page";
 import { Header, Footer } from "hippo-guest-component-library";
 
 export default function Home() {
